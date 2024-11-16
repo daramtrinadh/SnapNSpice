@@ -15,7 +15,9 @@ const RecipeDetails = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/recipes/${id}`);
+        const response = await fetch(
+          `https://snapnspice-1.onrender.com/api/recipes/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch recipe.");
         }
@@ -56,7 +58,7 @@ const RecipeDetails = () => {
       <Header />
       <div className='flex flex-col items-center justify-center w-full h-[50vh] sm:h-[60vh]'>
         <Image
-          src={`http://localhost:5000${recipe.imageUrl}`}
+          src={`https://snapnspice-1.onrender.com${recipe.imageUrl}`}
           alt={recipe.recipeName}
           className='object-cover flex items-center justify-center rounded-lg border-1'
           width={300} // Adjusted for clarity; can be dynamic
@@ -149,7 +151,6 @@ const RecipeDetails = () => {
             Enjoy Your Meal!
           </h2>
           <p className='text-md text-gray-700'>
-            
             We are glad you tried this recipe. We hope it turned out delicious!
             🍽️
           </p>

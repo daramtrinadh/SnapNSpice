@@ -10,7 +10,9 @@ const RecipeCards = () => {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/recipes");
+        const response = await fetch(
+          "https://snapnspice-1.onrender.com/api/recipes"
+        );
         const data = await response.json();
         setRecipes(data.recipes);
       } catch (error) {
@@ -35,7 +37,7 @@ const RecipeCards = () => {
               style={{
                 backgroundImage: `url(${
                   recipe.imageUrl
-                    ? `http://localhost:5000${recipe.imageUrl}`
+                    ? `https://snapnspice-1.onrender.com${recipe.imageUrl}`
                     : "/fallback-image.jpg"
                 })`,
               }}>
@@ -59,7 +61,8 @@ const RecipeCards = () => {
                   {recipe.recipeName} {/* Display recipe name */}
                 </h1>
                 <p className='font-normal text-sm text-gray-50 relative z-10 my-4'>
-                  {recipe.description.slice(0,10)} {/* Display recipe description */}
+                  {recipe.description.slice(0, 10)}{" "}
+                  {/* Display recipe description */}
                 </p>
               </div>
             </div>

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    domains: ["snapnspice-1.onrender.com"],
     remotePatterns: [
       {
         protocol: "http",

@@ -33,7 +33,7 @@ const Page = () => {
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:5000/recipe/signup";
+    const url = "https://snapnspice-1.onrender.com/recipe/signup";
     const options = {
       method: "POST",
       headers: {
@@ -63,7 +63,7 @@ const Page = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:5000/recipe/login";
+    const url = "https://snapnspice-1.onrender.com/recipe/login";
     const options = {
       method: "POST",
       headers: {

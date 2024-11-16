@@ -32,7 +32,8 @@ const Header = () => {
             <Link href="/">
                 <Image src="/SnapNSpice.png" width={50} height={50} className='logo' alt='logo' />
             </Link>
-            <h1 className='tagline'>Capture, Cook, and Share the Flavor</h1>
+            <h1 className='tagline hidden sm:block'>Capture, Cook, and Share the Flavor</h1>
+            <Link href="/MainHome"><h1 className='text-white'>Explore</h1></Link>
 
             <div>
                 {userDetails ? (
