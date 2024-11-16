@@ -222,24 +222,24 @@ const RecipeForm = () => {
           <div className='flex items-center space-x-4'>
             <button
               className={`border border-gray-300 rounded-md p-2 ${
-                difficulty === "Easy" ? "bg-blue-200" : "bg-white"
-              } text-gray-700 hover:bg-gray-100`}
+                difficulty === "Easy" ? "bg-blue-200 text-white" : "bg-white"
+              } text-gray-700 `}
               onClick={() => setDifficulty("Easy")}>
-              Easy 👍
+              Easy 👌
             </button>
             <button
               className={`border border-gray-300 rounded-md p-2 ${
-                difficulty === "Medium" ? "bg-blue-200" : "bg-white"
-              } text-gray-700 hover:bg-gray-100`}
+                difficulty === "Medium" ? "bg-blue-500 text-white" : "bg-white"
+              } text-gray-700`}
               onClick={() => setDifficulty("Medium")}>
-              Medium 👍
+              Medium👍
             </button>
             <button
               className={`border border-gray-300 rounded-md p-2 ${
-                difficulty === "Hard" ? "bg-blue-200" : "bg-white"
-              } text-gray-700 hover:bg-gray-100`}
+                difficulty === "Hard" ? "bg-red-400 text-white" : "bg-white"
+              } text-gray-700`}
               onClick={() => setDifficulty("Hard")}>
-              Hard 👍
+              Hard 💪
             </button>
           </div>
         </div>
@@ -326,7 +326,7 @@ const RecipeForm = () => {
           <div className='mb-2'>
             <input
               type='text'
-              placeholder='Add ingredient'
+              placeholder='Enter ingredient'
               className='p-2 w-full text-black border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500'
               value={newIngredient}
               onChange={(e) => setNewIngredient(e.target.value)}
@@ -334,7 +334,7 @@ const RecipeForm = () => {
             <button
               onClick={handleAddIngredient}
               className='mt-2 px-4 py-2 bg-blue-500 text-white rounded-md'>
-              Add Ingredient
+              Add 
             </button>
           </div>
           {ingredients.map((ingredient) => (
@@ -368,14 +368,14 @@ const RecipeForm = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows='4'
-            placeholder='Enter a description for the dish'></textarea>
+            placeholder='Enter the description and steps for the recipe'></textarea>
         </div>
 
         {/* Submit Button */}
         <div className='flex justify-center'>
           <button
             onClick={handleRecipeSubmit}
-            className='bg-blue-600 text-black py-2 px-6 rounded-lg shadow-md'>
+            className='bg-green-400 text-black py-2 px-6 rounded-lg shadow-md'>
             Save Recipe
           </button>
         </div>

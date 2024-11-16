@@ -56,7 +56,7 @@ const RecipeDetails = () => {
   return (
     <div>
       <Header />
-      <div className='flex flex-col items-center justify-center w-full h-[50vh] sm:h-[60vh]'>
+      <div className='flex flex-col items-center justify-center w-full m-4'>
         <Image
           src={`https://snapnspice-1.onrender.com${recipe.imageUrl}`}
           alt={recipe.recipeName}
