@@ -12,7 +12,7 @@ const Page = () => {
     if (token) {
       router.push("/MainHome");
     }
-  }, []);
+  }, [router]);
 
   const [isRightPanelActive, setRightPanelActive] = useState(false);
   const [signupUsername, setSignupUsername] = useState("");
