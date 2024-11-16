@@ -1,0 +1,32 @@
+.featured-content {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    text-align: center;
+    margin:10px;
+  }
+  
+  .featured-content h2 {
+    margin-bottom: 15px;
+  }
+  
+  .recipes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .recipe {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+  }
+  
+  .recipe img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
