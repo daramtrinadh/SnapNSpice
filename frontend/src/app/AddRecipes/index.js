@@ -77,10 +77,13 @@ const RecipeForm = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/recipes", {
-        method: "POST",
-        body: recipeData, // Send the FormData with the image and the recipe data
-      });
+      const response = await fetch(
+        "https://snapnspice-1.onrender.com/api/recipes",
+        {
+          method: "POST",
+          body: recipeData, // Send the FormData with the image and the recipe data
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json(); // Get the error message from the server
