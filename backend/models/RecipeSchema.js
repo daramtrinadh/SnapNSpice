@@ -12,42 +12,48 @@ const RecipeSchema = new mongoose.Schema({
   prepTime: {
     hours: {
       type: Number,
-      required: true,
+      required: false,
       min: 0,
+      default:null,
     },
     minutes: {
       type: Number,
-      required: true,
+      required: false,
       min: 0,
-      max: 59,
+      default: null,
     },
   },
   bakingTime: {
     hours: {
       type: Number,
-      required: true,
+      required: false, // Make it optional
       min: 0,
+      default: null, // Default to null if not provided
     },
     minutes: {
       type: Number,
-      required: true,
+      required: false, // Make it optional
       min: 0,
       max: 59,
+      default: null, // Default to null if not provided
     },
   },
   restingTime: {
     hours: {
       type: Number,
-      required: true,
+      required: false, // Make it optional
       min: 0,
+      default: null, // Default to null if not provided
     },
     minutes: {
       type: Number,
-      required: true,
+      required: false, // Make it optional
       min: 0,
       max: 59,
+      default: null, // Default to null if not provided
     },
   },
+
   ingredients: {
     type: [String],
     required: true,
@@ -68,12 +74,12 @@ const RecipeSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  user:{
-    type:String,
+  user: {
+    type: String,
   },
-  imageUrl:{
-    type:String,
-    required:false,
+  imageUrl: {
+    type: String,
+    required: false,
   },
   createdAt: {
     type: Date,

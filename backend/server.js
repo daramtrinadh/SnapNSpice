@@ -57,7 +57,7 @@ app.post("/api/recipes", upload.single("image"), async (req, res) => {
       ingredients,
       difficulty,
       description,
-      user
+      user,
     } = req.body;
 
     // Validate that all required fields are provided
@@ -65,8 +65,6 @@ app.post("/api/recipes", upload.single("image"), async (req, res) => {
       !recipeName ||
       !portionCount ||
       !prepTime ||
-      !bakingTime ||
-      !restingTime ||
       !ingredients ||
       !difficulty ||
       !description
@@ -76,14 +74,22 @@ app.post("/api/recipes", upload.single("image"), async (req, res) => {
 
     // Parse time fields (assuming they are sent in 'HH:mm' format)
     const parseTime = (time) => {
+      if (!time || typeof time !== "string") {
+        // If time is not provided or not a string, return default values
+        return { hours: null, minutes: null };
+      }
+
       const [hours, minutes] = time.split(":").map(Number);
-      return { hours, minutes };
+      // Validate hours and minutes
+      return {
+        hours: isNaN(hours) ? null : hours,
+        minutes: isNaN(minutes) ? null : minutes,
+      };
     };
 
     const prepTimeObj = parseTime(prepTime);
     const bakingTimeObj = parseTime(bakingTime);
     const restingTimeObj = parseTime(restingTime);
-    
 
     // Handle file upload (if an image was provided)
     let imageUrl = null;
@@ -130,7 +136,9 @@ app.get("/api/recipes", async (req, res) => {
     }
 
     // Respond with the recipes
-    res.status(200).json({ message: "Recipes retrieved successfully", recipes });
+    res
+      .status(200)
+      .json({ message: "Recipes retrieved successfully", recipes });
   } catch (error) {
     console.error("Error retrieving recipes:", error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -140,7 +148,7 @@ app.get("/api/recipes", async (req, res) => {
 app.get("/api/recipes/:id", async (req, res) => {
   try {
     const recipeId = req.params.id;
-     console.log("Received ID:", recipeId);
+    console.log("Received ID:", recipeId);
 
     // Find recipe by ID
     const recipe = await RecipeSchema.findById(recipeId);
@@ -157,7 +165,6 @@ app.get("/api/recipes/:id", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
-
 
 // Signup route
 app.post("/recipe/signup", async (req, res) => {

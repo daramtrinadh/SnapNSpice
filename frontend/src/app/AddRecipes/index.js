@@ -7,7 +7,7 @@ const RecipeForm = () => {
   useEffect(() => {
     const storedUser = localStorage.getItem("recipeUser");
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser); // Parse JSON to object
+      const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
     }
   }, []);
@@ -31,18 +31,7 @@ const RecipeForm = () => {
   // Handle API Call for Recipe Creation
   const handleRecipeSubmit = async () => {
     // Basic form validation
-    if (
-      !recipeName ||
-      !portionCount ||
-      !prepTimeHours ||
-      !prepTimeMinutes ||
-      !bakingTimeHours ||
-      !bakingTimeMinutes ||
-      !restingTimeHours ||
-      !restingTimeMinutes ||
-      !description ||
-      !ingredients
-    ) {
+    if (!recipeName || !portionCount || !description || !ingredients) {
       alert("Please fill in all required fields");
       return;
     }
@@ -52,21 +41,22 @@ const RecipeForm = () => {
     recipeData.append("portionCount", portionCount);
 
     // Append time fields if required (checking for existence)
-    if (prepTimeHours && prepTimeMinutes) {
-      recipeData.append("prepTime", `${prepTimeHours}:${prepTimeMinutes}`);
-    }
-    if (bakingTimeHours && bakingTimeMinutes) {
-      recipeData.append(
-        "bakingTime",
-        `${bakingTimeHours}:${bakingTimeMinutes}`
-      );
-    }
-    if (restingTimeHours && restingTimeMinutes) {
-      recipeData.append(
-        "restingTime",
-        `${restingTimeHours}:${restingTimeMinutes}`
-      );
-    }
+
+    const formattedPrepTimeHours = prepTimeHours ? prepTimeHours : "NA";
+    const formattedPrepTimeMinutes = prepTimeMinutes ? prepTimeMinutes : "NA";
+    recipeData.append(
+      "prepTime",
+      `${formattedPrepTimeHours}:${formattedPrepTimeMinutes}`
+    );
+
+    const bakingHours = bakingTimeHours || "NA";
+    const bakingMinutes = bakingTimeMinutes || "NA";
+    recipeData.append("bakingTime", `${bakingHours}:${bakingMinutes}`);
+
+    // Append resting time
+    const restingHours = restingTimeHours || "NA";
+    const restingMinutes = restingTimeMinutes || "NA";
+    recipeData.append("restingTime", `${restingHours}:${restingMinutes}`);
 
     recipeData.append("ingredients", JSON.stringify(ingredients));
     recipeData.append("difficulty", difficulty);

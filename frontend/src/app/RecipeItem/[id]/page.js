@@ -97,12 +97,16 @@ const RecipeDetails = () => {
           </div>
 
           {/* Preparation Section */}
+          {/* Preparation Section */}
           <div className='m-3 w-full sm:w-1/2 md:w-1/5 lg:w-1/5'>
             <h1 className='text-lg font-semibold text-gray-800 mb-2'>
               Preparation
             </h1>
             <p className='text-md font-medium text-gray-700'>
-              {recipe.prepTime.hours}h {recipe.prepTime.minutes}min
+              {recipe.prepTime?.hours !== null &&
+              recipe.prepTime?.minutes !== null
+                ? `${recipe.prepTime.hours}h ${recipe.prepTime.minutes}min`
+                : "Not Available"}
             </p>
           </div>
 
@@ -112,7 +116,10 @@ const RecipeDetails = () => {
               Resting
             </h1>
             <p className='text-md font-medium text-gray-700'>
-              {recipe.restingTime.hours}h {recipe.restingTime.minutes}min
+              {recipe.restingTime?.hours !== null &&
+              recipe.restingTime?.minutes !== null
+                ? `${recipe.restingTime.hours}h ${recipe.restingTime.minutes}min`
+                : "Not Available"}
             </p>
           </div>
 
@@ -120,7 +127,10 @@ const RecipeDetails = () => {
           <div className='m-3 w-full sm:w-1/2 md:w-1/5 lg:w-1/5'>
             <h1 className='text-lg font-semibold text-gray-800 mb-2'>Baking</h1>
             <p className='text-md font-medium text-gray-700'>
-              {recipe.bakingTime.hours}h {recipe.bakingTime.minutes}min
+              {recipe.bakingTime?.hours !== null &&
+              recipe.bakingTime?.minutes !== null
+                ? `${recipe.bakingTime.hours}h ${recipe.bakingTime.minutes}min`
+                : "Not Available"}
             </p>
           </div>
         </div>
