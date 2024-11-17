@@ -27,8 +27,11 @@ const RecipeForm = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [imageFile, setImageFile] = useState("");
   const [popupVisible, setPopupVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle API Call for Recipe Creation
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleRecipeSubmit = async () => {
     // Basic form validation
     if (!recipeName || !portionCount || !description || !ingredients) {
@@ -36,12 +39,16 @@ const RecipeForm = () => {
       return;
     }
 
+    // Prevent further submissions until the current one completes
+    if (isSubmitting) return; // Prevent form submission if already submitting
+
+    setIsSubmitting(true); // Set submitting to true
+
     const recipeData = new FormData();
     recipeData.append("recipeName", recipeName);
     recipeData.append("portionCount", portionCount);
 
     // Append time fields if required (checking for existence)
-
     const formattedPrepTimeHours = prepTimeHours ? prepTimeHours : "NA";
     const formattedPrepTimeMinutes = prepTimeMinutes ? prepTimeMinutes : "NA";
     recipeData.append(
@@ -82,6 +89,8 @@ const RecipeForm = () => {
 
       const result = await response.json();
       console.log("Recipe successfully added:", result);
+
+      // Reset form values
       setRecipeName("");
       setPortionCount(2);
       setPrepTimeHours(1);
@@ -106,6 +115,8 @@ const RecipeForm = () => {
       }, 3000);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsSubmitting(false); // Re-enable the submit button after submission
     }
   };
 
@@ -334,7 +345,7 @@ const RecipeForm = () => {
             <button
               onClick={handleAddIngredient}
               className='mt-2 px-4 py-2 bg-blue-500 text-white rounded-md'>
-              Add 
+              Add
             </button>
           </div>
           {ingredients.map((ingredient) => (
@@ -374,6 +385,7 @@ const RecipeForm = () => {
         {/* Submit Button */}
         <div className='flex justify-center'>
           <button
+            disabled={isSubmitting}
             onClick={handleRecipeSubmit}
             className='bg-green-400 text-black py-2 px-6 rounded-lg shadow-md'>
             Save Recipe
