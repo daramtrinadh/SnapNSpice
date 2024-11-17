@@ -27,7 +27,6 @@ const RecipeForm = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [imageFile, setImageFile] = useState("");
   const [popupVisible, setPopupVisible] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Handle API Call for Recipe Creation
   const [isSubmitting, setIsSubmitting] = useState(false);
