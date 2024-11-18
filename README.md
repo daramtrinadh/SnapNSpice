@@ -6,7 +6,6 @@ SnapNSpice is an interactive recipe sharing platform where users can post, share
 
 - **Recipe Posting**: Users can post their recipes, including ingredients, instructions, and photo.
 - **Responsive Design**: The app is optimized for both mobile and desktop devices for a seamless experience.
-- **User Profiles**: Each user has a profile where they can manage their posted recipes and account details.
 - **3D UI Elements**: The user interface includes 3D design elements for a more interactive and visually appealing experience.
 
 ## Tech Stack
